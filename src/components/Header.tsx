@@ -19,6 +19,7 @@ export function Header() {
   const links = [
     { id: "home", label: t("nav_home") },
     { id: "services", label: t("nav_services") },
+    { id: "workflow", label: t("nav_workflow") },
     { id: "about", label: t("nav_about") },
     { id: "contact", label: t("nav_contact") },
   ] as const;

@@ -6,6 +6,7 @@ import { GoldButton } from "@/components/GoldButton";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Testimonials } from "@/components/Testimonials";
 import { HeroCounter } from "@/components/HeroCounter";
+import { Workflow } from "@/components/Workflow";
 import { CONTACT } from "@/lib/contact";
 import { toast } from "sonner";
 import {
@@ -211,7 +212,7 @@ function HomePage() {
       {/* SERVICES OVERVIEW */}
       <section id="services" className="relative py-32 px-6 lg:px-10 scroll-mt-24">
         <SectionHeading kicker={t("services_title")} title={t("services_sub")} />
-        <div className="max-w-6xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-gold/20 border border-gold rounded-2xl overflow-hidden">
+        <div className="max-w-5xl mx-auto mt-12 grid grid-cols-2 md:grid-cols-4 gap-px bg-gold/20 border border-gold rounded-2xl overflow-hidden">
           {servicesGrid.map((s, i) => (
             <motion.div
               key={i}
@@ -219,10 +220,10 @@ function HomePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="bg-[var(--warm-black)] hover:bg-gradient-to-br hover:from-[var(--charcoal)] hover:to-black p-8 min-h-[160px] flex flex-col justify-between transition-all duration-500 group cursor-default"
+              className="bg-[var(--warm-black)] hover:bg-gradient-to-br hover:from-[var(--charcoal)] hover:to-black p-5 min-h-[110px] flex flex-col justify-between transition-all duration-500 group cursor-default"
             >
-              <div className="text-xs text-[var(--gold)]/60 tracking-widest">0{i + 1}</div>
-              <div className="font-display text-xl text-ivory group-hover:text-[var(--gold)] transition-colors">{s}</div>
+              <div className="text-[10px] text-[var(--gold)]/60 tracking-widest">0{i + 1}</div>
+              <div className="font-display text-base md:text-lg text-ivory group-hover:text-[var(--gold)] transition-colors leading-tight">{s}</div>
             </motion.div>
           ))}
         </div>
@@ -280,6 +281,9 @@ function HomePage() {
           })}
         </div>
       </section>
+
+      {/* WORKFLOW */}
+      <Workflow />
 
       {/* 3D STORYTELLING */}
       <section id="about" className="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-10 overflow-hidden scroll-mt-24">

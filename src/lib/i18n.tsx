@@ -9,6 +9,7 @@ export const dict: Dict = {
   brand_tag: { ar: "أداء. استراتيجية. تحويل.", en: "Performance. Strategy. Conversion." },
   nav_home: { ar: "الرئيسية", en: "Home" },
   nav_services: { ar: "الخدمات", en: "Services" },
+  nav_workflow: { ar: "منهجيتنا", en: "Workflow" },
   nav_about: { ar: "الرؤية", en: "Vision" },
   nav_contact: { ar: "تواصل", en: "Contact" },
   cta_whatsapp: { ar: "محادثة واتساب", en: "Chat on WhatsApp" },

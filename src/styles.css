@@ -100,6 +100,41 @@
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Live animated WhatsApp button gradient */
+@keyframes wa-flow {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+@keyframes wa-halo {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.95; transform: scale(1.08); }
+}
+.wa-live-bg {
+  background: linear-gradient(
+    120deg,
+    #25D366 0%,
+    #1ebe5a 18%,
+    var(--gold) 38%,
+    var(--gold-soft) 50%,
+    var(--gold) 62%,
+    #1ebe5a 82%,
+    #25D366 100%
+  );
+  background-size: 300% 300%;
+  animation: wa-flow 6s ease-in-out infinite;
+}
+.wa-live-halo {
+  background: conic-gradient(
+    from 0deg,
+    #25D366,
+    var(--gold-soft),
+    var(--gold),
+    #25D366
+  );
+  animation: wa-halo 3.2s ease-in-out infinite;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

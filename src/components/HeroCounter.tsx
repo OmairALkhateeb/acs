@@ -7,7 +7,7 @@ export function HeroCounter({ to = 50 }: { to?: number }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    const duration = 1500; // ms
+    const duration = 3000; // ms
     const start = performance.now();
     let raf = 0;
 
