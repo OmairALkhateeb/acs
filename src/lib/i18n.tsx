@@ -17,12 +17,21 @@ export const dict: Dict = {
   cta_start: { ar: "ابدأ المحادثة", en: "Start the Conversation" },
 
   hero_kicker: { ar: "وكالة أداء وإبداع رقمي", en: "Creative Performance Studio" },
-  hero_title_1: { ar: "لا تملك مشكلة إعلانات.", en: "You don't have an ad problem." },
-  hero_title_2: { ar: "تملك مشكلة تحويل.", en: "You have a conversion problem." },
+  hero_brand_1: { ar: "A-C-S", en: "A-C-S" },
+  hero_brand_2: { ar: "ستوديو الأداء الإبداعي", en: "Creative Performance Studio" },
   hero_sub: {
-    ar: "نحوّل الانتباه إلى نتائج. استراتيجية، تنفيذ، إدارة إبداعية، وأداء رقمي يُقاس.",
-    en: "We turn attention into measurable outcomes. Strategy, execution, creative direction, and digital performance.",
+    ar: "المقر الرئيسي في دبي، مع فروع في الأردن، المملكة العربية السعودية، وسوريا. نهندس قرارات السوق ونصنع علامات تُحدث أثراً اقتصادياً حقيقياً.",
+    en: "Headquartered in Dubai, with branches in Jordan, Saudi Arabia, and Syria. We engineer market decisions and build brands that create real economic impact.",
   },
+  team_label: { ar: "عضو في الفريق", en: "Team Members" },
+  whatsapp_chat_cta: { ar: "تحدث معنا الآن", en: "Chat with us" },
+  hero_value: {
+    ar: "تسويق قائم على الأداء وأنظمة نمو قابلة للتوسّع.",
+    en: "Performance-driven marketing & scalable growth systems.",
+  },
+
+  testimonials_kicker: { ar: "// شهادات", en: "// TESTIMONIALS" },
+  testimonials_title: { ar: "ما يقوله شركاؤنا", en: "What Our Partners Say" },
 
   positioning_title: { ar: "موقعنا", en: "Our Positioning" },
   positioning_text: {

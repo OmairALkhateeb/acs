@@ -3,6 +3,7 @@ import appCss from "../styles.css?url";
 import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 function NotFoundComponent() {
   return (
@@ -59,17 +60,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <I18nProvider>
-      <div className="relative min-h-screen bg-background noise overflow-hidden">
-        {/* Ambient background glow */}
-        <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-radial-gold blur-3xl opacity-60" />
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-radial-gold blur-3xl opacity-30" />
+      <div className="relative min-h-screen overflow-hidden">
+        {/* Global continuous cinematic background — fixed across all sections */}
+        <div className="pointer-events-none fixed inset-0 -z-10 bg-cinematic">
+          <div className="aurora-layer-1" />
+          <div className="aurora-layer-2" />
+          <div className="absolute inset-0 grid-overlay opacity-[0.08]" />
         </div>
         <Header />
         <main className="relative">
           <Outlet />
         </main>
         <Footer />
+        <FloatingWhatsApp />
       </div>
     </I18nProvider>
   );

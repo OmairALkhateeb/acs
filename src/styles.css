@@ -81,6 +81,14 @@
   --gradient-radial-gold: radial-gradient(circle at 50% 50%, oklch(0.68 0.13 80 / 0.35), transparent 70%);
   --gradient-dark: linear-gradient(180deg, oklch(0 0 0) 0%, oklch(0.08 0.01 60) 50%, oklch(0 0 0) 100%);
   --gradient-surface: linear-gradient(145deg, oklch(0.12 0.02 60) 0%, oklch(0.05 0.01 60) 100%);
+  /* Black-dominant cinematic base — warm deep black with subtle gold breath */
+  --gradient-cinematic:
+    radial-gradient(ellipse 60% 45% at 18% 12%, oklch(0.30 0.08 78 / 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 40% at 82% 88%, oklch(0.28 0.07 72 / 0.16) 0%, transparent 70%),
+    linear-gradient(180deg,
+      oklch(0.04 0.008 60) 0%,
+      oklch(0.06 0.012 65) 50%,
+      oklch(0.04 0.008 60) 100%);
 
   /* Shadows */
   --shadow-gold: 0 10px 40px -10px oklch(0.68 0.13 80 / 0.5);
@@ -102,11 +110,15 @@
   }
 
   body {
-    background: var(--pure-black);
+    background: transparent;
     color: var(--ivory);
     font-family: var(--font-sans);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    background: var(--pure-black);
   }
 
   [dir="rtl"] body {
@@ -223,3 +235,80 @@
 .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
 .animate-pulse-gold { animation: pulse-gold 3s ease-in-out infinite; }
 .animate-fade-up { animation: fade-up 0.9s var(--ease-luxe) both; }
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-5%, -3%, 0) scale(1); }
+  50%  { transform: translate3d(6%, 4%, 0) scale(1.08); }
+  100% { transform: translate3d(-5%, -3%, 0) scale(1); }
+}
+@keyframes aurora-drift-2 {
+  0%   { transform: translate3d(4%, 5%, 0) scale(1.05); }
+  50%  { transform: translate3d(-6%, -4%, 0) scale(1); }
+  100% { transform: translate3d(4%, 5%, 0) scale(1.05); }
+}
+.bg-cinematic {
+  background: var(--gradient-cinematic);
+}
+.aurora-layer-1 {
+  position: absolute; inset: -15%;
+  background: radial-gradient(circle at 30% 30%, oklch(0.50 0.11 78 / 0.18), transparent 60%);
+  filter: blur(90px);
+  animation: aurora-drift 24s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+.aurora-layer-2 {
+  position: absolute; inset: -15%;
+  background: radial-gradient(circle at 70% 70%, oklch(0.42 0.09 70 / 0.16), transparent 65%);
+  filter: blur(110px);
+  animation: aurora-drift-2 30s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+/* Premium gradient button */
+.btn-premium {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.95rem 1.85rem;
+  border-radius: 9999px;
+  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+  color: #0a0a0a;
+  background: linear-gradient(135deg, oklch(0.85 0.10 88) 0%, oklch(0.70 0.13 80) 40%, oklch(0.55 0.11 75) 100%);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  box-shadow: 0 10px 30px -10px oklch(0.68 0.13 80 / 0.55), inset 0 1px 0 oklch(1 0 0 / 0.35);
+  transition: transform .5s var(--ease-luxe), box-shadow .5s var(--ease-luxe), background-position .8s var(--ease-luxe);
+  overflow: hidden;
+}
+.btn-premium:hover {
+  transform: translateY(-2px);
+  background-position: 100% 50%;
+  box-shadow: 0 18px 50px -10px oklch(0.68 0.13 80 / 0.7), inset 0 1px 0 oklch(1 0 0 / 0.4);
+}
+.btn-premium::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, oklch(1 0 0 / 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .9s var(--ease-luxe);
+  pointer-events: none;
+}
+.btn-premium:hover::after { transform: translateX(120%); }
+
+.btn-premium-outline {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 9999px;
+  font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
+  color: var(--gold-soft);
+  background: linear-gradient(135deg, oklch(0.12 0.02 70 / 0.6), oklch(0.06 0.01 70 / 0.6));
+  border: 1px solid oklch(0.68 0.13 80 / 0.55);
+  backdrop-filter: blur(8px);
+  transition: all .5s var(--ease-luxe);
+}
+.btn-premium-outline:hover {
+  color: #0a0a0a;
+  background: linear-gradient(135deg, oklch(0.85 0.10 88), oklch(0.55 0.11 75));
+  border-color: oklch(0.78 0.11 85);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px -10px oklch(0.68 0.13 80 / 0.6);
+}
