@@ -21,8 +21,8 @@ export const dict: Dict = {
   hero_brand_1: { ar: "A-C-S", en: "A-C-S" },
   hero_brand_2: { ar: "ستوديو الأداء الإبداعي", en: "Creative Performance Studio" },
   hero_sub: {
-    ar: "المقر الرئيسي في دبي، مع فروع في الأردن، المملكة العربية السعودية، وسوريا. نهندس قرارات السوق ونصنع علامات تُحدث أثراً اقتصادياً حقيقياً.",
-    en: "Headquartered in Dubai, with branches in Jordan, Saudi Arabia, and Syria. We engineer market decisions and build brands that create real economic impact.",
+    ar: "المقر الرئيسي في دبي، مع فرع في الأردن، المملكة العربية السعودية، وسوريا. نهندس قرارات السوق ونصنع علامات تُحدث أثراً اقتصادياً حقيقياً.",
+    en: "Headquartered in Dubai, with branche in Jordan, Saudi Arabia, and Syria. We engineer market decisions and build brands that create real economic impact.",
   },
   team_label: { ar: "عضو في الفريق", en: "Team Members" },
   whatsapp_chat_cta: { ar: "تحدث معنا الآن", en: "Chat with us" },
