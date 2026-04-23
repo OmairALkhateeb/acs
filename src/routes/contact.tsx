@@ -27,22 +27,50 @@ function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [hpWebsite, setHpWebsite] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedMessage = message.trim();
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) return;
+
     setSubmitting(true);
-    const text = `${name} (${email}):\n\n${message}`;
-    const waUrl = `${CONTACT.whatsappUrl}?text=${encodeURIComponent(text)}`;
-    window.open(waUrl, "_blank", "noreferrer");
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: trimmedName,
+          email: trimmedEmail,
+          message: trimmedMessage,
+          website: hpWebsite.trim(),
+        }),
+      });
+
+      const data: unknown = await res.json().catch(() => null);
+      const errMsg =
+        data && typeof data === "object" && "error" in data && typeof (data as { error: unknown }).error === "string"
+          ? (data as { error: string }).error
+          : null;
+
+      if (!res.ok) {
+        toast.error(errMsg ?? t("form_error"));
+        return;
+      }
+
       toast.success(t("form_success"));
       setName("");
       setEmail("");
       setMessage("");
-    }, 600);
+      setHpWebsite("");
+    } catch {
+      toast.error(t("form_error"));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -128,6 +156,21 @@ function ContactPage() {
             <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-radial-gold blur-3xl opacity-30 pointer-events-none" />
 
             <div className="relative space-y-7">
+              <div className="sr-only" aria-hidden="true">
+                <label htmlFor="contact-check-field">Leave this field empty</label>
+                <input
+                  id="contact-check-field"
+                  name="contact_check_field"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="new-password"
+                  inputMode="text"
+                  spellCheck={false}
+                  data-lpignore="true"
+                  value={hpWebsite}
+                  onChange={(e) => setHpWebsite(e.target.value)}
+                />
+              </div>
               <div className={`grid md:grid-cols-2 gap-7 ${isRTL ? "text-right" : "text-left"}`}>
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-xs tracking-[0.3em] uppercase text-[var(--gold-soft)] flex items-center gap-2">

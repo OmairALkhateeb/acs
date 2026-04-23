@@ -99,7 +99,11 @@ export const dict: Dict = {
   form_message_ph: { ar: "حدّثنا عن مشروعك وأهدافك...", en: "Tell us about your project and goals..." },
   form_submit: { ar: "إرسال الرسالة", en: "Send Message" },
   form_sending: { ar: "جارٍ الإرسال...", en: "Sending..." },
-  form_success: { ar: "تم فتح واتساب لإكمال الإرسال.", en: "WhatsApp opened — complete sending from there." },
+  form_success: { ar: "تم إرسال رسالتك. سنعود إليك قريباً.", en: "Your message was sent. We'll get back to you soon." },
+  form_error: {
+    ar: "تعذّر إرسال الرسالة. حاول مرة أخرى أو تواصل عبر واتساب.",
+    en: "We couldn't send your message. Try again or reach us on WhatsApp.",
+  },
   form_or: { ar: "أو تواصل مباشرة", en: "Or reach out directly" },
 
   footer_rights: { ar: "© 2025 A-C-S. جميع الحقوق محفوظة.", en: "© 2025 A-C-S. All rights reserved." },
