@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Testimonials } from "@/components/Testimonials";
 import { HeroCounter } from "@/components/HeroCounter";
 import { Workflow } from "@/components/Workflow";
+import { usePerformanceMode } from "@/lib/usePerformanceMode";
 import { toast } from "sonner";
 import {
   ArrowRight, Target, Zap, TrendingUp, Sparkles,
@@ -67,6 +68,7 @@ const serviceGroups: ServiceGroup[] = [
 
 function HomePage() {
   const { t, lang } = useI18n();
+  const { lowPowerMode } = usePerformanceMode();
   const isRTL = lang === "ar";
 
   const scrollTo = (id: string) => () => {
@@ -190,9 +192,13 @@ function HomePage() {
             className="relative w-full h-[320px] sm:h-[420px] lg:h-[600px]"
           >
             <div className="absolute inset-0 bg-radial-gold blur-2xl" />
-            <Suspense fallback={<div className="w-full h-full" />}>
-              <HourglassScene />
-            </Suspense>
+            {lowPowerMode ? (
+              <div className="w-full h-full rounded-2xl bg-radial-gold opacity-70" />
+            ) : (
+              <Suspense fallback={<div className="w-full h-full" />}>
+                <HourglassScene />
+              </Suspense>
+            )}
           </motion.div>
         </div>
 
@@ -219,7 +225,7 @@ function HomePage() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.7 }}
               className="group relative bg-surface border border-gold rounded-2xl p-8 overflow-hidden hover:border-[var(--gold)] transition-all duration-500 hover:-translate-y-2 hover:shadow-gold-lg"
             >
@@ -245,7 +251,7 @@ function HomePage() {
               key={i}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               className="bg-[var(--warm-black)] hover:bg-gradient-to-br hover:from-[var(--charcoal)] hover:to-black p-5 min-h-[110px] flex flex-col justify-between transition-all duration-500 group cursor-default"
             >
@@ -317,9 +323,13 @@ function HomePage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[500px]">
             <div className="absolute inset-0 bg-radial-gold blur-2xl opacity-50" />
-            <Suspense fallback={null}>
-              <OrbScene />
-            </Suspense>
+            {lowPowerMode ? (
+              <div className="w-full h-full rounded-2xl bg-radial-gold opacity-60" />
+            ) : (
+              <Suspense fallback={null}>
+                <OrbScene />
+              </Suspense>
+            )}
           </div>
           <div>
             <SectionHeading
@@ -340,7 +350,7 @@ function HomePage() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
               className="group relative bg-surface border border-gold rounded-2xl p-10 overflow-hidden hover:border-[var(--gold)] hover:shadow-gold-lg transition-all duration-500"
             >
@@ -391,7 +401,7 @@ function HomePage() {
             onSubmit={onSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative bg-surface border border-gold rounded-2xl p-8 md:p-12 shadow-deep overflow-hidden"
           >

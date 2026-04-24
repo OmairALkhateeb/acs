@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { lazy, Suspense, useState, type FormEvent } from "react";
 import { useI18n } from "@/lib/i18n";
+import { usePerformanceMode } from "@/lib/usePerformanceMode";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CONTACT } from "@/lib/contact";
 import { MessageCircle, ArrowRight, Send, User, AtSign, MessageSquare } from "lucide-react";
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const { t, lang } = useI18n();
+  const { lowPowerMode } = usePerformanceMode();
   const isRTL = lang === "ar";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -83,9 +85,13 @@ function ContactPage() {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[500px] order-2 lg:order-1">
             <div className="absolute inset-0 bg-radial-gold blur-2xl" />
-            <Suspense fallback={null}>
-              <HourglassScene />
-            </Suspense>
+            {lowPowerMode ? (
+              <div className="w-full h-full rounded-2xl bg-radial-gold opacity-70" />
+            ) : (
+              <Suspense fallback={null}>
+                <HourglassScene />
+              </Suspense>
+            )}
           </div>
 
           <div className={`order-1 lg:order-2 space-y-6 ${lang === "ar" ? "text-right" : "text-left"}`}>
@@ -95,7 +101,7 @@ function ContactPage() {
               rel="noreferrer"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="group block bg-surface border border-gold rounded-2xl p-8 hover:border-[var(--gold)] hover:shadow-gold-lg transition-all duration-500 relative overflow-hidden"
             >
@@ -115,7 +121,7 @@ function ContactPage() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               className="pt-6 border-t border-gold/30"
             >
@@ -134,7 +140,7 @@ function ContactPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className={`mb-12 ${isRTL ? "text-right" : "text-left"}`}
           >
@@ -148,7 +154,7 @@ function ContactPage() {
             onSubmit={onSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative bg-surface border border-gold rounded-2xl p-8 md:p-12 shadow-deep overflow-hidden"
           >

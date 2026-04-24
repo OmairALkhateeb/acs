@@ -291,22 +291,33 @@
     radial-gradient(ellipse 55% 40% at 20% 15%, rgba(167, 136, 80, 0.18) 0%, transparent 65%),
     radial-gradient(ellipse 50% 38% at 80% 85%, rgba(103, 78, 41, 0.18) 0%, transparent 70%),
     linear-gradient(120deg, #050505 0%, #12100c 30%, #2a2013 50%, #0d0c09 70%, #050505 100%);
-  background-size: 100% 100%, 100% 100%, 260% 260%;
-  animation: cinematic-gold-shift 14s ease-in-out infinite;
+  background-size: 100% 100%, 100% 100%, 180% 180%;
+  animation: cinematic-gold-shift 28s ease-in-out infinite;
+  will-change: background-position;
 }
 .aurora-layer-1 {
   position: absolute; inset: -15%;
   background: radial-gradient(circle at 30% 30%, oklch(0.50 0.11 78 / 0.18), transparent 60%);
-  filter: blur(90px);
-  animation: aurora-drift 24s ease-in-out infinite;
+  filter: blur(70px);
+  animation: aurora-drift 40s ease-in-out infinite;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 .aurora-layer-2 {
   position: absolute; inset: -15%;
   background: radial-gradient(circle at 70% 70%, oklch(0.42 0.09 70 / 0.16), transparent 65%);
-  filter: blur(110px);
-  animation: aurora-drift-2 30s ease-in-out infinite;
+  filter: blur(80px);
+  animation: aurora-drift-2 46s ease-in-out infinite;
   mix-blend-mode: screen;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-cinematic,
+  .aurora-layer-1,
+  .aurora-layer-2 {
+    animation: none !important;
+  }
 }
 
 /* Premium gradient button */

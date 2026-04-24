@@ -34,13 +34,13 @@ function Orb() {
 
 export function OrbScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 6], fov: 50 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }} style={{ width: "100%", height: "100%" }}>
+    <Canvas camera={{ position: [0, 0, 6], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }} style={{ width: "100%", height: "100%" }}>
       <Suspense fallback={null}>
         <ambientLight intensity={0.3} />
         <spotLight position={[5, 5, 5]} intensity={2} color="#E9CA91" />
         <spotLight position={[-5, -3, 4]} intensity={1} color="#A78850" />
         <Orb />
-        <Sparkles count={60} scale={5} size={1.5} speed={0.3} color="#E9CA91" />
+        <Sparkles count={24} scale={4.5} size={1.2} speed={0.2} color="#E9CA91" />
         <Environment preset="night" />
       </Suspense>
     </Canvas>

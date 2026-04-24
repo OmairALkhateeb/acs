@@ -91,8 +91,8 @@ export function HourglassScene() {
   return (
     <Canvas
       camera={{ position: [0, 0, 7.5], fov: 45 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       style={{ width: "100%", height: "100%" }}
       resize={{ scroll: false, debounce: { scroll: 50, resize: 0 } }}
     >
@@ -102,7 +102,7 @@ export function HourglassScene() {
         <spotLight position={[-5, -3, 4]} angle={0.4} intensity={1.2} color="#A78850" />
         <pointLight position={[0, 0, 3]} intensity={0.6} color="#C3AA74" />
         <Hourglass />
-        <Sparkles count={80} scale={6} size={2} speed={0.4} color="#E9CA91" opacity={0.8} />
+        <Sparkles count={36} scale={5} size={1.6} speed={0.25} color="#E9CA91" opacity={0.65} />
         <Environment preset="night" />
       </Suspense>
     </Canvas>

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import { useI18n } from "@/lib/i18n";
+import { usePerformanceMode } from "@/lib/usePerformanceMode";
 import { SectionHeading } from "@/components/SectionHeading";
 import { GoldLink } from "@/components/GoldButton";
 import { CONTACT } from "@/lib/contact";
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   const { t, lang } = useI18n();
+  const { lowPowerMode } = usePerformanceMode();
 
   const pillars = [
     { icon: Eye, t: t("vision_t"), d: t("vision_d") },
@@ -50,9 +52,13 @@ function AboutPage() {
             <p className="mt-6 sm:mt-8 text-base sm:text-lg text-ivory/70 leading-relaxed max-w-xl">{t("about_sub")}</p>
           </motion.div>
           <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px]">
-            <Suspense fallback={null}>
-              <OrbScene />
-            </Suspense>
+            {lowPowerMode ? (
+              <div className="w-full h-full rounded-2xl bg-radial-gold opacity-60" />
+            ) : (
+              <Suspense fallback={null}>
+                <OrbScene />
+              </Suspense>
+            )}
           </div>
         </div>
       </section>
@@ -65,7 +71,7 @@ function AboutPage() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
               className="group relative bg-surface border border-gold rounded-2xl p-10 overflow-hidden hover:border-[var(--gold)] hover:shadow-gold-lg transition-all duration-500"
             >
