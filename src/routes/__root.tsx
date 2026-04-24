@@ -4,6 +4,7 @@ import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { useEffect } from "react";
 
 function NotFoundComponent() {
   return (
@@ -58,6 +59,37 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+
+    const suppressed = [
+      /THREE\.Clock: This module has been deprecated/i,
+      /THREE\.WebGLProgram: Program Info Log:/i,
+      /warning X4122:/i,
+    ];
+
+    const shouldSuppress = (value: unknown) =>
+      typeof value === "string" && suppressed.some((pattern) => pattern.test(value));
+
+    const originalWarn = console.warn;
+    const originalError = console.error;
+
+    console.warn = (...args: unknown[]) => {
+      if (args.some(shouldSuppress)) return;
+      originalWarn(...args);
+    };
+
+    console.error = (...args: unknown[]) => {
+      if (args.some(shouldSuppress)) return;
+      originalError(...args);
+    };
+
+    return () => {
+      console.warn = originalWarn;
+      console.error = originalError;
+    };
+  }, []);
+
   return (
     <I18nProvider>
       <div className="relative min-h-screen overflow-hidden">

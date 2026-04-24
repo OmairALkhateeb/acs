@@ -65,7 +65,7 @@ function AboutPage() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
               className="group relative bg-surface border border-gold rounded-2xl p-10 overflow-hidden hover:border-[var(--gold)] hover:shadow-gold-lg transition-all duration-500"
             >

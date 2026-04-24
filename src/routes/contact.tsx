@@ -95,7 +95,7 @@ function ContactPage() {
               rel="noreferrer"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6 }}
               className="group block bg-surface border border-gold rounded-2xl p-8 hover:border-[var(--gold)] hover:shadow-gold-lg transition-all duration-500 relative overflow-hidden"
             >
@@ -115,7 +115,7 @@ function ContactPage() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.3 }}
               className="pt-6 border-t border-gold/30"
             >
@@ -134,7 +134,7 @@ function ContactPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.7 }}
             className={`mb-12 ${isRTL ? "text-right" : "text-left"}`}
           >
@@ -148,7 +148,7 @@ function ContactPage() {
             onSubmit={onSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative bg-surface border border-gold rounded-2xl p-8 md:p-12 shadow-deep overflow-hidden"
           >

@@ -176,7 +176,7 @@ function HomePage() {
                 {t("cta_explore")}
                 <ArrowRight className="w-4 h-4" />
               </GoldButton>
-              <GoldButton onClick={scrollTo("about")} variant="outline">
+              <GoldButton onClick={scrollTo("about")} variant="outline" className="strategy-cta-btn">
                 {t("cta_strategy")}
               </GoldButton>
             </div>
@@ -219,7 +219,7 @@ function HomePage() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: i * 0.15, duration: 0.7 }}
               className="group relative bg-surface border border-gold rounded-2xl p-8 overflow-hidden hover:border-[var(--gold)] transition-all duration-500 hover:-translate-y-2 hover:shadow-gold-lg"
             >
@@ -245,7 +245,7 @@ function HomePage() {
               key={i}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: i * 0.05 }}
               className="bg-[var(--warm-black)] hover:bg-gradient-to-br hover:from-[var(--charcoal)] hover:to-black p-5 min-h-[110px] flex flex-col justify-between transition-all duration-500 group cursor-default"
             >
@@ -340,7 +340,7 @@ function HomePage() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: i * 0.1, duration: 0.7 }}
               className="group relative bg-surface border border-gold rounded-2xl p-10 overflow-hidden hover:border-[var(--gold)] hover:shadow-gold-lg transition-all duration-500"
             >
@@ -391,7 +391,7 @@ function HomePage() {
             onSubmit={onSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="relative bg-surface border border-gold rounded-2xl p-8 md:p-12 shadow-deep overflow-hidden"
           >

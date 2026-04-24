@@ -281,8 +281,18 @@
   50%  { transform: translate3d(-6%, -4%, 0) scale(1); }
   100% { transform: translate3d(4%, 5%, 0) scale(1.05); }
 }
+@keyframes cinematic-gold-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .bg-cinematic {
-  background: var(--gradient-cinematic);
+  background:
+    radial-gradient(ellipse 55% 40% at 20% 15%, rgba(167, 136, 80, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 38% at 80% 85%, rgba(103, 78, 41, 0.18) 0%, transparent 70%),
+    linear-gradient(120deg, #050505 0%, #12100c 30%, #2a2013 50%, #0d0c09 70%, #050505 100%);
+  background-size: 100% 100%, 100% 100%, 260% 260%;
+  animation: cinematic-gold-shift 14s ease-in-out infinite;
 }
 .aurora-layer-1 {
   position: absolute; inset: -15%;
@@ -346,4 +356,97 @@
   border-color: oklch(0.78 0.11 85);
   transform: translateY(-2px);
   box-shadow: 0 14px 40px -10px oklch(0.68 0.13 80 / 0.6);
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Gold button animated gradient */
+.gold-button {
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background: linear-gradient(120deg, #5C4524 0%, #A78850 35%, #E9CA91 65%, #C3AA74 100%);
+  background-size: 260% 260%;
+  animation: gold-gradient 2.8s ease-in-out infinite;
+  color: transparent;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 50px;
+  box-shadow: 0 10px 24px -12px rgba(233, 202, 145, 0.9);
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.gold-button:hover {
+  background: linear-gradient(120deg, #EFD4A3 0%, #C8A968 35%, #8A6938 65%, #F6E3BF 100%);
+  background-size: 320% 320%;
+  transform: translateY(-2px);
+  filter: saturate(1.15) brightness(1.08);
+  box-shadow: 0 16px 34px -14px rgba(239, 212, 163, 0.95);
+}
+
+.button-text {
+  position: relative;
+  z-index: 10;
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button-text-outline {
+  color: var(--gold-soft);
+}
+
+@keyframes classic-gold-border {
+  0% {
+    border-color: #674E29;
+    box-shadow: 0 0 0 0 rgba(103, 78, 41, 0.18);
+  }
+  50% {
+    border-color: #E9CA91;
+    box-shadow: 0 0 0 2px rgba(233, 202, 145, 0.14);
+  }
+  100% {
+    border-color: #A78850;
+    box-shadow: 0 0 0 0 rgba(167, 136, 80, 0.16);
+  }
+}
+
+.strategy-cta-btn {
+  background: transparent !important;
+  backdrop-filter: none;
+  animation: classic-gold-border 2.4s ease-in-out infinite;
+}
+
+.strategy-cta-btn:hover {
+  background: transparent !important;
+  transform: translateY(-2px);
+}
+
+.strategy-cta-btn:hover .button-text {
+  color: #E9CA91;
+}
+
+@keyframes gold-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

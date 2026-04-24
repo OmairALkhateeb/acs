@@ -81,7 +81,7 @@ function ServicesPage() {
               key={g.titleKey}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               transition={{ duration: 0.9 }}
               className={`grid lg:grid-cols-12 gap-8 items-center ${reverse ? "lg:[direction:rtl]" : ""}`}
             >
