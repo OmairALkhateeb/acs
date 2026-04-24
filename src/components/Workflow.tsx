@@ -26,7 +26,7 @@ const steps: Step[] = [
   { icon: Megaphone, ar: "تسويق المؤثرين", en: "Influencer Marketing", descAr: "أصوات تصل وتقنع.", descEn: "Voices that reach and persuade." },
   { icon: Share2, ar: "وسائل التواصل", en: "Social Media", descAr: "حضور يصنع الطلب.", descEn: "Presence that creates demand." },
   { icon: Monitor, ar: "التسويق الرقمي", en: "Digital Marketing", descAr: "حملات أداء قابلة للتوسع.", descEn: "Scalable performance campaigns." },
-  { icon: Wallet, ar: "تخطيط الميزانية", en: "Budget Planning", descAr: "كل دينار له هدف.", descEn: "Every dinar has a purpose." },
+  { icon: Wallet, ar: "تخطيط الميزانية", en: "Budget Planning", descAr: "كل دولار له هدف.", descEn: "Every dollar has a purpose." },
 ];
 
 export function Workflow() {
