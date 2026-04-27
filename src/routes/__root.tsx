@@ -1,4 +1,5 @@
 import { Outlet, createRootRoute, HeadContent, Scripts, Link } from "@tanstack/react-router";
+import acsLogoUrl from "@/assets/acs-logo.png?url";
 import appCss from "../styles.css?url";
 import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/Header";
@@ -37,7 +38,10 @@ export const Route = createRootRoute({
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9b282b9a-5260-4517-a5a2-b1038c3aa5f9" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/9b282b9a-5260-4517-a5a2-b1038c3aa5f9" },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: acsLogoUrl, type: "image/png" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
